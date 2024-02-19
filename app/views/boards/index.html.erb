@@ -1,20 +1,22 @@
-<div>
-  <div>
-    <h1>
-      All boards
-    </h1>
-  </div>
-</div>
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+    All Boards
+    <div class="d-flex flex-row-reverse mb-3">
+      <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add a new board
+        </button>
 
-<hr>
-
-<div>
-  <div>
-    <h2>
-      Add a new board
-    </h2>
-
-    <form action="/insert_board" method="post">
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">New Board</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                  <form action="/insert_board" method="post">
       <div>
         <label for="name_box">
           Name
@@ -22,22 +24,25 @@
 
         <input type="text" id="name_box" name="query_name">
       </div>
-
-      <button>
-        Add board
-      </button>
-    </form>
-  </div>
-</div>
-
-<hr>
-
-<ul>
-  <% @list_of_boards.each do |a_board| %>
-    <li>
-      <a href="/boards/<%= a_board.id %>">
+    </div>
+      <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Add board</button>
+            </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+  <ul class="list-group list-group-flush">
+    <% @list_of_boards.each do |a_board| %>
+    <li class="list-group-item">
+      
+        <a href="/boards/<%= a_board.id %>">
         <%= a_board.name %>
+        <i class="fa-solid fa-chevron-right"></i>
       </a>
     </li>
-  <% end %>
-</ul>
+    <% end %>
+  </ul>
+</div>
